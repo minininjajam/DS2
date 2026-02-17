@@ -4,28 +4,28 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
 import matplotlib.pyplot as plt
 
-# 1. Загрузка данных
-print("Загрузка базы данных...")
+# 1. Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С…
+print("Р—Р°РіСЂСѓР·РєР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…...")
 df = pd.read_csv('GlobalLandTemperaturesByCountry.csv')
 
-# --- ИНТЕРАКТИВНЫЙ ВВОД СТРАНЫ ---
-all_countries = df['Country'].unique() # Список всех доступных стран
-target_country = input("Введите название страны на английском (например, Belarus, Poland, Russia): ").strip()
+# --- РРќРўР•Р РђРљРўРР’РќР«Р™ Р’Р’РћР” РЎРўР РђРќР« ---
+all_countries = df['Country'].unique() # РЎРїРёСЃРѕРє РІСЃРµС… РґРѕСЃС‚СѓРїРЅС‹С… СЃС‚СЂР°РЅ
+target_country = input("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅС‹ РЅР° Р°РЅРіР»РёР№СЃРєРѕРј (РЅР°РїСЂРёРјРµСЂ, Belarus, Poland, Russia): ").strip()
 
 if target_country not in all_countries:
-    print(f"Ошибка: Страна '{target_country}' не найдена в базе.")
-    print("Примеры доступных стран:", ", ".join(all_countries[:10])) # Показываем первые 10 для примера
+    print(f"РћС€РёР±РєР°: РЎС‚СЂР°РЅР° '{target_country}' РЅРµ РЅР°Р№РґРµРЅР° РІ Р±Р°Р·Рµ.")
+    print("РџСЂРёРјРµСЂС‹ РґРѕСЃС‚СѓРїРЅС‹С… СЃС‚СЂР°РЅ:", ", ".join(all_countries[:10])) # РџРѕРєР°Р·С‹РІР°РµРј РїРµСЂРІС‹Рµ 10 РґР»СЏ РїСЂРёРјРµСЂР°
     exit()
 
-# 2. Фильтрация и очистка
+# 2. Р¤РёР»СЊС‚СЂР°С†РёСЏ Рё РѕС‡РёСЃС‚РєР°
 df_filtered = df[df['Country'] == target_country].copy()
 df_filtered = df_filtered.dropna(subset=['AverageTemperature'])
 
-# Преобразование дат
+# РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РґР°С‚
 df_filtered['dt'] = pd.to_datetime(df_filtered['dt'])
 df_filtered['year'], df_filtered['month'] = df_filtered['dt'].dt.year, df_filtered['dt'].dt.month
 
-# 3. Разделение и обучение (80/20)
+# 3. Р Р°Р·РґРµР»РµРЅРёРµ Рё РѕР±СѓС‡РµРЅРёРµ (80/20)
 X = df_filtered[['year', 'month']]
 y = df_filtered['AverageTemperature']
 split = int(len(df_filtered) * 0.8)
@@ -33,35 +33,35 @@ split = int(len(df_filtered) * 0.8)
 X_train, X_test = X[:split], X[split:]
 y_train, y_test = y[:split], y[split:]
 
-print(f"Обучение модели для страны: {target_country}...")
+print(f"РћР±СѓС‡РµРЅРёРµ РјРѕРґРµР»Рё РґР»СЏ СЃС‚СЂР°РЅС‹: {target_country}...")
 model = RandomForestRegressor(n_estimators=100, random_state=42).fit(X_train, y_train)
 
-# 4. Расчет метрик
+# 4. Р Р°СЃС‡РµС‚ РјРµС‚СЂРёРє
 mae = mean_absolute_error(y_test, model.predict(X_test))
 r2 = r2_score(y_test, model.predict(X_test))
-print(f"Точность модели (R2): {r2:.4f}")
-print(f"Средняя ошибка (MAE): {mae:.2f} °C")
+print(f"РўРѕС‡РЅРѕСЃС‚СЊ РјРѕРґРµР»Рё (R2): {r2:.4f}")
+print(f"РЎСЂРµРґРЅСЏСЏ РѕС€РёР±РєР° (MAE): {mae:.2f} В°C")
 
-# --- ИНТЕРАКТИВНЫЙ ВВОД ГОДА ---
+# --- РРќРўР•Р РђРљРўРР’РќР«Р™ Р’Р’РћР” Р“РћР”Рђ ---
 try:
-    target_year = int(input(f"Введите год для прогноза в {target_country}: "))
+    target_year = int(input(f"Р’РІРµРґРёС‚Рµ РіРѕРґ РґР»СЏ РїСЂРѕРіРЅРѕР·Р° РІ {target_country}: "))
 except ValueError:
-    print("Ошибка: введите целое число.")
+    print("РћС€РёР±РєР°: РІРІРµРґРёС‚Рµ С†РµР»РѕРµ С‡РёСЃР»Рѕ.")
     exit()
 
-# 5. Прогноз
+# 5. РџСЂРѕРіРЅРѕР·
 future = pd.DataFrame({'year': target_year, 'month': range(1, 13)})
 future['Temp'] = model.predict(future)
 
-print(f"\nПрогноз для {target_country} на {target_year} год:")
+print(f"\nРџСЂРѕРіРЅРѕР· РґР»СЏ {target_country} РЅР° {target_year} РіРѕРґ:")
 print(future[['month', 'Temp']].to_string(index=False))
 
-# 6. Визуализация
+# 6. Р’РёР·СѓР°Р»РёР·Р°С†РёСЏ
 plt.figure(figsize=(10, 5))
-plt.plot(future['month'], future['Temp'], 'o-g', label='Прогноз')
-plt.title(f'Прогноз температуры: {target_country} ({target_year})')
-plt.xlabel('Месяц')
-plt.ylabel('Температура (°C)')
+plt.plot(future['month'], future['Temp'], 'o-g', label='РџСЂРѕРіРЅРѕР·')
+plt.title(f'РџСЂРѕРіРЅРѕР· С‚РµРјРїРµСЂР°С‚СѓСЂС‹: {target_country} ({target_year})')
+plt.xlabel('РњРµСЃСЏС†')
+plt.ylabel('РўРµРјРїРµСЂР°С‚СѓСЂР° (В°C)')
 plt.xticks(range(1, 13))
 plt.grid(True, alpha=0.3)
 plt.axhline(0, color='red', alpha=0.3)
