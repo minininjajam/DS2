@@ -16,4 +16,8 @@
 1. Откройте файл в [Google Colab](https://colab.research.google.com).
 2. Запустите все ячейки.
 3. Введите название страны (например, `Russia`, `Belarus`) и год для прогноза (например, `2026`)
+   -----------
+   Добавлен второй вариант ДЗ:
+   https://gsvafhxn4jlch9pr7zosgh.streamlit.app
+
 
