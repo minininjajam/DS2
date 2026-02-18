@@ -16,7 +16,7 @@ st.markdown("""
 # 1. Загрузка данных (кешируем, чтобы не скачивать постоянно)
 @st.cache_data
 def load_data():
-    url = 'https://raw.githubusercontent.com'
+    url = 'https://raw.githubusercontent.com/minininjajam/DS2/refs/heads/main/GlobalLandTemperaturesByCountry.csv'
     df = pd.read_csv(url)
     df = df.dropna(subset=['AverageTemperature'])
     df['dt'] = pd.to_datetime(df['dt'])
