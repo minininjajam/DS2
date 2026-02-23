@@ -4,7 +4,7 @@ Face Match: Поиск двойника среди звезд
 
 ## Инструкция по запуску:
 1. Установите зависимости: `pip install -r requirements.txt`
-2. Скачайте датасет (https://www.kaggle.com/datasets/jessicali9530/lfw-dataset) и распакуйте папку `lfw-deepfunneled` в корень проекта.
+2. Скачайте датасет (https://www.kaggle.com/datasets/jessicali9530/lfw-dataset) и распакуйте папку `lfw-deepfunneled` в корень проекта (118Мб)
 3. Положите свое фото под именем `me.jpg` рядом с кодом.
 4. Запустите `main.py`.
 
