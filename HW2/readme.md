@@ -17,3 +17,4 @@ Face Match: Поиск двойника среди звезд
 
 ---------------------------------------------------------------------------------------
 Изменение: добавлена вторая версия проекта: https://colab.research.google.com/drive/153iBPGfv--udH8-Yr27xg8_BNjSHOfeF?usp=sharing
+Блокнот: https://github.com/minininjajam/DS2/blob/main/HW2/DSHW2v2.ipynb
