@@ -1,6 +1,8 @@
 
 Название: Siamese Autoencoder for Face Verification (LFW Dataset).
+
 Описание: Реализация сиамского автоэнкодера «с нуля» на PyTorch для задачи верификации лиц.
+
 Ключевые фишки:
 Собственная архитектура Encoder-Decoder (без предобученных моделей).
 Комбинированная функция потерь: MSE + Contrastive Loss.
