@@ -8,3 +8,5 @@
 Комбинированная функция потерь: MSE + Contrastive Loss.
 Эксперимент на «уверенность» модели с использованием фото Арнольда Шварценеггера и его двойника.
 Результат: Точность ~72% на 10 эпохах.
+
+https://colab.research.google.com/drive/1YZkEYSg7xmjBiHRt8MOdoHqGli-aKk9T#scrollTo=5Mg76BRI7kcN
