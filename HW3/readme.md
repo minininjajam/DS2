@@ -1,6 +1,6 @@
 Итоговый результат можно посмотреть по ссылке https://drive.google.com/file/d/1C30eJgW4SMY2qN42-8Czwo3fHj8f0Caa/view?usp=drive_link
 
-# 🐝 Queen Bee Detector & Tracker (YOLOv11)
+# 🐝 Queen Bee Detector & Tracker (YOLO)
 
 Интеллектуальная система автоматического поиска и отслеживания пчелиной матки на видео. 
 
