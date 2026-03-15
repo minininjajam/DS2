@@ -1,0 +1,7 @@
+aiogram
+pandas
+fuzzywuzzy
+python-Levenshtein
+torch --index-url https://download.pytorch.org
+scikit-learn
+nltk
