@@ -12,18 +12,3 @@
 *   **Сбор данных:** Автоматическое сохранение заказов (`orders.csv`) и оптовых заявок (`questions.csv`).
 *   **Гибкий каталог:** Разделение на категории (Мёд, Мыло, Свечи) с юмористическим описанием.
 
-## 🛠 Технологический стек
-*   **Language:** Python 3.10+
-*   **AI Framework:** [PyTorch](https://pytorch.org) (Multilayer Perceptron)
-*   **Bot Framework:** [aiogram 3.x](https://docs.aiogram.dev)
-*   **NLP:** NLTK (Russian Stemming, Tokenization)
-*   **Data Analysis:** Pandas
-*   **String Matching:** FuzzyWuzzy (Levenshtein Distance)
-
-## 📂 Структура проекта
-*   `bot.py` — основной файл запуска бота и логика FSM (состояний).
-*   `model.py` — архитектура нейронной сети (3 линейных слоя, ReLU).
-*   `train.py` — скрипт для предобработки текста и обучения модели.
-*   `intents.json` — база знаний (шаблоны и ответы).
-*   `data.pth` — сохраненные веса обученной нейросети.
-*   `requirements.txt` — список необходимых библиотек.
