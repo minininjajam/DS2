@@ -1,0 +1,6 @@
+aiogram
+pandas
+numpy
+torch
+sentence-transformers
+scipy
